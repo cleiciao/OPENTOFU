@@ -26,7 +26,9 @@ Conteudo apresentado nesse artigo
 Site Oficial Opentofu: https://opentofu.org<br>
 Site Oficial Proxmox: https://www.proxmox.com/en/
 
-================================================================================================================================
+============================================================================================================
+
+
 
 #1 - Instalação do OPENTOFU no Servidor Proxmox.<br>
 Link para o passo a passo: https://opentofu.org/docs/intro/install/deb/ <br>
