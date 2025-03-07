@@ -25,6 +25,7 @@ Site Oficial da ferramenta: https://opentofu.org<br>
 
 
 #1 - Instalação do OPENTOFU no Servidor Proxmox.<br>
+Link para o passo a passo: https://opentofu.org/docs/intro/install/deb/ <br>
 
 ```bash
 
