@@ -7,9 +7,12 @@
 
 
 Cleicião Diego Moro<br>
-Linkedin: 
+Linkedin:  <br>
 Email:
 <br><br>
+
+
+Contribuição para o projeto: PIX <br>
 
 
 
