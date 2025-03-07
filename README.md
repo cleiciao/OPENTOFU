@@ -72,10 +72,10 @@ terraform {
 }
 
 provider "proxmox" {
-  pm_api_url      = "https://IP-DO-SERVIDOR:8006/api2/json"
-  pm_user         = "userapi@pam"
-  pm_password     = "pass"
-  pm_tls_insecure = true
+  pm_api_url      = "https://IP-DO-SERVIDOR:8006/api2/json" #URL DE ACESSO AO PVE
+  pm_user         = "userapi@pam" #USUARIO
+  pm_password     = "pass" #SENHA
+  pm_tls_insecure = true 
 }
 
 resource "proxmox_vm_qemu" "vm1" {
@@ -85,21 +85,21 @@ resource "proxmox_vm_qemu" "vm1" {
   clone       = "vm-base" #NOME DA VM TEMPLATE
 
   cores       = 2 #CPU PARA A MEMORIA
-  memory      = 2048 #ME
-  sockets     = 1
+  memory      = 2048 #MEMORIA
+  sockets     = 1 #QTD DE SOCKETS DO SERVIDO
 
   network {
-    model  = "virtio"
-    bridge = "vmbr0"
+    model  = "virtio" #TIPO DA REDE
+    bridge = "vmbr0" #INTERFACE
   }
 
   disk {
-    size  = "10G"
-    type  = "scsi"
-    storage = "local-lvm"
+    size  = "10G" #TAMANHO DO DISK
+    type  = "scsi" #TIPO DO DISCO
+    storage = "local-lvm" #STORAGE ONDE SERÁ CRIADO
   }
 
-  os_type  = "cloud-init"
+  os_type  = "cloud-init" #TIPO DA VM
 }
 
 ```
