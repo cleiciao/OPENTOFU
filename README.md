@@ -1,6 +1,5 @@
-#Em desenvolvimento
 
-# Instalação e configuração do OPENTOFU em ambiente Proxmox para automatizas a criação de VMs/CTs
+# Instalação e configuração do OPENTOFU em ambiente Proxmox para automatizas a criação de VMs/CTs (EM DESENVOLVIMENTO)
 
 
 Cleicião Diego Moro<br>
