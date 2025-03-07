@@ -73,6 +73,9 @@ Acesso seu Proxmox e crie um usuário que iremos utilizar para nosso artigo.
 
 Datacenter >
            Users >
+
+
+ ![alt text]imagens/pve1.png
                  
 
 Conteúdo do arquivo main.tf
