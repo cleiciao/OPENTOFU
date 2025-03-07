@@ -116,3 +116,22 @@ resource "proxmox_vm_qemu" "vm1" {
 }
 
 ```
+
+
+#3 - Criação da VM template com cloudinit
+
+Link para download das imagens debian cloudinit: https://cdimage.debian.org/images/cloud/
+
+⚠️ ATENÇÃO: Antes de criarmos a VM template precisamos instalar o pacote libguestfs-tools no Proxmox para manipulara as imagens de VMs.
+
+```bash
+#Instalação do Pacote
+apt install libguestfs-tools -y
+
+#Download da Imagem Debian.
+wget https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2
+
+#Agora vamos instalar o qemu-guest-agent na imagem baixada
+virt-customize --add  debian-12-generic-amd64.qcow2  --install qemu-guest-agent
+
+```
