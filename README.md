@@ -1,6 +1,6 @@
 
 # Instalação e configuração do OPENTOFU em ambiente Proxmox para automatizas a criação de VMs/CTs (EM DESENVOLVIMENTO)
-<div style="text-align: center;">
+<div style="display: flex; justify-content: center;">
 ![alt text](https://www.proxmox.com/images/proxmox/Proxmox_logo_standard_hex_400px.png)<br><br>
 ![alt text](https://www.bigdatawire.com/wp-content/uploads/2024/01/opentofu-logo.png)
 </div>
