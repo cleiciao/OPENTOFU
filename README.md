@@ -71,7 +71,8 @@ Antes de mais nada vamos criar um usuário e um token para API no Proxmox.<br>
 
 Acesso seu Proxmox e crie um usuário que iremos utilizar para nosso artigo.
 
-Para criar o usuário e token você pode realizar via CLI ou via WEBGUI, aqui irei realizar via CLI.
+Para criar o usuário e token você pode realizar via CLI ou via WEBGUI, aqui irei realizar via CLI. Iremos utilizar no arquivo main.tf
+mencionado no inicio do artigo.
 
 ```bash
 
@@ -84,18 +85,6 @@ pveum user token add opentofu@pve 13579 --privsep 0
 #Atribuindo permissão ao token
 pveum aclmod / -user "opentofu@pve!opentofu13579" -role PVEVMAdmin
 ```
-
-
-Basta preencher o usuário de acordo com o que deseja.
-
-
-Depois vamos criar uma um token API para esse user
-
-Datacenter >
-           API Tokens >
-                       Add
-
-
 
                  
 
@@ -163,4 +152,42 @@ wget https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd
 #Agora vamos instalar o qemu-guest-agent na imagem baixada
 virt-customize --add  debian-12-generic-amd64.qcow2  --install qemu-guest-agent
 
+#Criando a VM, as configuração da VM são básicas mas você alterar de acordo com a necessidade.
+
+qm create 9001 \
+ --name debian12-cloud-img\
+ --numa 0 \
+ --ostype l26 \
+  --cpu cputype=host \
+  --cores 2 \
+  --sockets 1 \
+  --memory 2018 \
+  --net0 virtio,bridge=vmbr0
+
+
+#Vamos importar a imagem que baixando anteriormente, você precisar estar no mesmo diretorio onde baixou a imagem.
+
+qm importdisk 9001 debian-12-generic-amd64.qcow2 local-lvm
+
+
+#Definindo configurações da VM
+qm set 9001 \
+  --scsihw virtio-scsi-pci \
+  --scsi0 local-lvm:vm-9001-disk-0 \
+  --ide2 local-lvm:cloudinit \
+  --boot c \
+  --bootdisk scsi0 \
+  --vga std \
+  --agent enabled=1
+
+#Vocẽ pode aumentar o tamanho do disco (opcional)
+qm disk resize 9001 scsi0 +100G
+
+#Transformando VM em Templante
+qm template 9001
 ```
+
+
+#4 - Realizando testes para criação de VMs
+
+Para criar as VMs com o Opentofu, você pode executar os comando diretamente no Proxmox ou diretamente na sua maquina desde que tenha comunicação com o host.
