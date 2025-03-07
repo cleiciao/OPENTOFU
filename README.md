@@ -185,9 +185,24 @@ qm disk resize 9001 scsi0 +100G
 
 #Transformando VM em Templante
 qm template 9001
+
 ```
 
 
 #4 - Realizando testes para criação de VMs
 
 Para criar as VMs com o Opentofu, você pode executar os comando diretamente no Proxmox ou diretamente na sua maquina desde que tenha comunicação com o host.
+
+Irei executar da minha maquina mesmo
+
+```bash
+tofu init
+
+tofu apply -auto-approve
+
+```
+Se tudo correr bem você irá receber retorno como esse no terminal.
+
+proxmox_vm_qemu.vm1: Creating..
+
+E pode observer na tela do seu Proxmox a magica acontecendo.
