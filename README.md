@@ -7,6 +7,8 @@
 
 
 Cleicião Diego Moro<br>
+Linkedin: 
+Email:
 
 
 
