@@ -73,9 +73,19 @@ Acesso seu Proxmox e crie um usuário que iremos utilizar para nosso artigo.
 
 Datacenter >
            Users >
+                   > Add
+
+Basta preencher o usuário de acordo com o que deseja.
 
 
-# ![alt text](https://github.com/cleiciao/OPENTOFU/blob/main/imagens/pve1.png)
+Depois vamos criar uma um token API para esse user
+
+Datacenter >
+           API Tokens >
+                       Add
+
+
+
                  
 
 Conteúdo do arquivo main.tf
