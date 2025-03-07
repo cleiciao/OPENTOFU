@@ -17,3 +17,6 @@ Conteudo apresentado nesse artigo
 
 
 
+Site Oficial da ferramenta: https://opentofu.org<br>
+
+
