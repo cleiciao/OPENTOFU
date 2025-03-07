@@ -75,7 +75,7 @@ Datacenter >
            Users >
 
 
- ![alt text](https://github.com/cleiciao/OPENTOFU/blob/main/imagens/pve1.png)
+# ![alt text](https://github.com/cleiciao/OPENTOFU/blob/main/imagens/pve1.png)
                  
 
 Conteúdo do arquivo main.tf
