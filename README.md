@@ -71,9 +71,20 @@ Antes de mais nada vamos criar um usuário e um token para API no Proxmox.<br>
 
 Acesso seu Proxmox e crie um usuário que iremos utilizar para nosso artigo.
 
-Datacenter >
-           Users >
-                   > Add
+Para criar o usuário e token você pode realizar via CLI ou via WEBGUI, aqui irei realizar via CLI.
+
+```bash
+
+#Criando usuário
+pveum user add opentofu@pve -password 13579
+
+#Criando token
+pveum user token add opentofu@pve 13579 --privsep 0
+
+#Atribuindo permissão ao token
+pveum aclmod / -user "opentofu@pve!opentofu13579" -role PVEVMAdmin
+```
+
 
 Basta preencher o usuário de acordo com o que deseja.
 
