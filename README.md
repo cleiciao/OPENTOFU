@@ -9,6 +9,10 @@ Cleicião Diego Moro<br>
 
  🤩🤩
 Nesse artigo irei demonstrar como trabalhar com OPENTOFU junto com o  Proxmox para criação automatizada de maquinas virtuais.
+ATENÇÃO: Nesse artigo não será abordado a instalação do Proxmox, mas irei deixar um link para um video do canal techvirt como referência.
+
+Canal YOUTUBE TechVirt: https://www.youtube.com/@TechVirt1
+
 
 Conteudo apresentado nesse artigo
 
