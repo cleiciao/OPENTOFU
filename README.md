@@ -56,7 +56,11 @@ Antes de mais nada vamos criar um usuário e um token para API no Proxmox.<br>
 ⚠️ ATENÇÃO: Evite usar o root para tarefas rotineiras, crie um usuário para manutenção e suporte ao servidor.<br>
 
 
-Acesso seu Proxmox e crie um usuário que iremos utilizar para nosso artigo 
+Acesso seu Proxmox e crie um usuário que iremos utilizar para nosso artigo.
+
+Datacenter >
+           Users >
+                 
 
 Conteúdo do arquivo main.tf
 
