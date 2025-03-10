@@ -77,15 +77,10 @@ mencionado no inicio do artigo.
 
 ```bash
 
-#Criando regra para para adminmistração do Opentofu
-pveum role add OpenTofu -privs "Datastore.Allocate,Datastore.AllocateSpace,Datastore.AllocateTemplate,Datastore.Audit,Group.Allocate,Pool.Allocate,Sys.AccessNetwork,Sys.Audit,Sys.Console,Sys.Modify,VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Config.CDROM,VM.Config.CPU,VM.Config.Cloudinit,VM.Config.Disk,VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot SDN.Use"
-
 #Criando usuário.Dica: Use um gerador de senhas :)
 pveum user add opentofu@pam --password "passwd"
 
 #Atribuindo permissão ao usuário
-pveum aclmod / -user opentofu@pam -role OpenTofu
-pveum aclmod / -user opentofu@pam -role PVEVMAdmin
 pveum aclmod / -user opentofu@pam -role Administrator
 
 ```
