@@ -8,7 +8,7 @@
 
 
 Cleicião Diego Moro<br>
-Linkedin: www.linkedin.com/in/cleicião-diego-moro-a42822157<br>
+Linkedin: www.linkedin.com/in/cleicião-diego-moro <br>
 Email:  cleiciaodiego@gmail.com
 <br><br>
 
