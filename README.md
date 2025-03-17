@@ -27,7 +27,7 @@ Conteudo apresentado nesse artigo
 #2 - Criando as configurações no arquivo main.tf<br> 
 #3 - Criação da VM template com cloudinit<br>
 #4 - Realizando testes para criação de VMs
-
+#5 - Expandir o disco da VM
 
 
 Site Oficial Opentofu: https://opentofu.org<br>
@@ -206,3 +206,18 @@ Se tudo correr bem você irá receber retorno como esse no terminal.
 proxmox_vm_qemu.vm1: Creating..
 
 E pode observer na tela do seu Proxmox a magica acontecendo.
+
+
+
+===========================================================================================================
+
+#5 - Expandindo recursos da VM
+
+No nosso arquivo de configuração da VM esta definido os recuros de VM em 2vCPUs, 2G de RAM e 10G de dicso, mas dependendo da aplicação ou serviço que iremos hospedar irá requerer recursos além dos já deinifidos. 
+Então vamos adicionar os recursos desejados.
+
+
+```bash
+qm resize <vmid> <disk> <size> 
+
+```
