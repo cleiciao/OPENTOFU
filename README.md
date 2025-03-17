@@ -218,6 +218,10 @@ Então vamos adicionar os recursos desejados.
 
 
 ```bash
+#Aumentando o disco
 qm resize <vmid> <disk> <size> 
+
+#Adicionado memoria
+qm set <vmid> --memory <amount>
 
 ```
