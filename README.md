@@ -217,11 +217,5 @@ No nosso arquivo de configuração da VM esta definido os recuros de VM em 2vCPU
 Então vamos adicionar os recursos desejados.
 
 
-```bash
-#Aumentando o disco
-qm resize <vmid> <disk> <size> 
 
-#Adicionado memoria
-qm set <vmid> --memory <amount>
 
-```
