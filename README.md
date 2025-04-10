@@ -179,9 +179,6 @@ qm set 9001 \
   --vga std \
   --agent enabled=1
 
-#Vocẽ pode aumentar o tamanho do disco (opcional)
-qm disk resize 9001 scsi0 +100G
-
 #Transformando VM em Templante
 qm template 9001
 
@@ -216,6 +213,8 @@ E pode observer na tela do seu Proxmox a magica acontecendo.
 No nosso arquivo de configuração da VM esta definido os recuros de VM em 2vCPUs, 2G de RAM e 10G de dicso, mas dependendo da aplicação ou serviço que iremos hospedar irá requerer recursos além dos já deinifidos. 
 Então vamos adicionar os recursos desejados.
 
-
-
+```bash
+#Vocẽ pode aumentar o tamanho do disco (opcional)
+qm disk resize 9001 scsi0 +100G
+```
 
