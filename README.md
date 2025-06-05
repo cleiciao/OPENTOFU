@@ -4,7 +4,7 @@
 <p align="center">
   <img src="https://www.proxmox.com/images/proxmox/Proxmox_logo_standard_hex_400px.png" alt="Proxmox Logo"><br><br>
   <img src="https://www.bigdatawire.com/wp-content/uploads/2024/01/opentofu-logo.png" alt="OpenTofu Logo">
-    <img src="https://www.bigdatawire.com/wp-content/uploads/2024/01/opentofu-logo.png" alt="Cloudinit Logo">
+    <img src="https://cloudinit.readthedocs.io/en/latest/_static/logo-dark-mode.png" alt="Cloudinit Logo">
 </p>
 
 
