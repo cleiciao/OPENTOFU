@@ -33,6 +33,8 @@ Conteudo apresentado nesse artigo
 
 Site Oficial Opentofu: https://opentofu.org<br>
 Site Oficial Proxmox: https://www.proxmox.com/en/
+Site Imagens Cloudinit Debian https://cloud.debian.org/images/cloud/
+
 
 ============================================================================================================
 
