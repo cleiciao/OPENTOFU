@@ -219,7 +219,7 @@ Então vamos adicionar os recursos desejados.
 qm disk resize 9001 scsi0 +100G
 ```
 
-#5 - Automatizando instalação de pacotes na VM com snippets
+#6 - Automatizando instalação de pacotes na VM com snippets
 
 Uma breve descrição: 
 Snippets (também conhecidos como "hookscript") são pequenos trechos de código ou scripts que podem ser usados para personalizar a inicialização de máquinas virtuais.
