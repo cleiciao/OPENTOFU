@@ -219,3 +219,85 @@ Então vamos adicionar os recursos desejados.
 qm disk resize 9001 scsi0 +100G
 ```
 
+#5 - Automatizando instalação de pacotes na VM com snippets
+
+Uma breve descrição: 
+Snippets (também conhecidos como "hookscript") são pequenos trechos de código ou scripts que podem ser usados para personalizar a inicialização de máquinas virtuais.
+
+Após trabalhar e criarmos as VMs com cloudinit e opentofu chegou a hora de autoamtizar a instalação de pacotes. 
+Quando falamos de poucas VMs a tarefa de instalação de pacotes e serviços pode ser facil, mas quando trabalhamos com muitas VMs isso pode ser um trabalho demorado e cansativo.
+Podemos automatizar a tarefa de instalação de pacotes e serviços com snippets.
+
+Aqui temos um exemplo de arquivo snippets que aplica as configurações em nossa VM. Será instalado alguns pacotes basicos e também o serviço DNS Unbound e Zabbix-agent já alterando o Server.
+No arquivo você pode adicionar o que achar necessário para seu ambiente, como alterar a porta SSH, usar chaves RSA para acesso sem senha.
+Esse arquivo tem que ser criado no diretorio /var/lib/vz/snippets do Proxmox o nome do arquivo fica a critério. Para isso no seu storage é preciso ativar a opção
+
+Exe: debian12.yaml
+
+Obs: a VM precisa de um IP que tenha saida para internet: NAT
+
+```
+#cloud-config
+hostname: minha-vm
+manage_etc_hosts: true
+
+users:
+  - name: usuario
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDlwRC1Cr6mu
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+
+chpasswd:
+  list: |
+    usuario:SenhaForte123
+  expire: False
+
+ssh_pwauth: true
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - vim
+  - sudo
+  - wget
+  - curl
+  - fail2ban
+  - htop
+  - gnupg
+  - unbound
+
+runcmd:
+  - curl -fsSL https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-6+ubuntu$(lsb_release -rs)_all.deb -o /tmp/zabbix-release.deb
+  - dpkg -i /tmp/zabbix-release.deb
+  - apt update
+  - apt install -y zabbix-agent
+  - sed -i 's/^Server=127.0.0.1/Server=192.168.1.10/' /etc/zabbix/zabbix_agentd.conf
+  - sed -i 's/^ServerActive=127.0.0.1/ServerActive=192.168.1.10/' /etc/zabbix/zabbix_agentd.conf
+  - systemctl enable zabbix-agent
+  - systemctl restart zabbix-agent
+  - sed -i 's/^#Port 22/Port 44044/' /etc/ssh/sshd_config
+  - systemctl restart ssh
+
+```
+Como aplicar as configs na nova VM? Primeiramente precisamos criar um clone da imagem que criar com cloudinit descrevemos isso no tópico #4 usando opentofu, mas você pode
+clonar da forma convencilan via SSH ou via WebGui
+
+qm clone <vmid> <newid> [OPTIONS]
+
+qm clone 9000 256 --full
+
+VMID: 9000 VM de template
+VMID: 256 VM nova que será criada
+FULL: cria a VM sem vinculo com o template
+
+Com a VM criada vamos aplicar a conf do arquivo que criamos.
+
+qm set 256 --cicustom "user=local:snippets/debian12.yaml"
+
+Agora pode iniciar a VM.
+
+qm start 256
+
+Após a VM iniciar você pode acessa-la via SSH com as credenciais definidas no arquivo e validar se os serviços que foram definidos estão instalado corretamente.  
